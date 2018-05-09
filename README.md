@@ -184,6 +184,30 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/calendars/:calendar_id`
 - [ ] `DELETE https://api.opendnd.org/v1/calendars/:calendar_id`
 
+### [Languages](languages/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/languages`
+- [ ] `POST   https://api.opendnd.org/v1/languages`
+- [ ] `GET    https://api.opendnd.org/v1/languages/:language_id`
+- [ ] `POST   https://api.opendnd.org/v1/languages/:language_id/export/:format`
+- [ ] `PUT    https://api.opendnd.org/v1/languages/:language_id`
+- [ ] `DELETE https://api.opendnd.org/v1/languages/:language_id`
+
+### [Cultures](cultures/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/cultures`
+- [ ] `POST   https://api.opendnd.org/v1/cultures`
+- [ ] `GET    https://api.opendnd.org/v1/cultures/:culture_id`
+- [ ] `POST   https://api.opendnd.org/v1/cultures/:culture_id/export/:format`
+- [ ] `PUT    https://api.opendnd.org/v1/cultures/:culture_id`
+- [ ] `DELETE https://api.opendnd.org/v1/cultures/:culture_id`
+
+### [Religions](religions/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/religions`
+- [ ] `POST   https://api.opendnd.org/v1/religions`
+- [ ] `GET    https://api.opendnd.org/v1/religions/:religion_id`
+- [ ] `POST   https://api.opendnd.org/v1/religions/:religion_id/export/:format`
+- [ ] `PUT    https://api.opendnd.org/v1/religions/:religion_id`
+- [ ] `DELETE https://api.opendnd.org/v1/religions/:religion_id`
+
 ### [Campaigns](campaigns/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/campaigns`
 - [ ] `POST   https://api.opendnd.org/v1/campaigns`
