@@ -5,7 +5,7 @@ This is a specification for the OpenDnD API which can be used to generate, save,
 Below are a list of API routes that are on the roadmap:
 
 ```sh
-# generic
+# core
 POST   https://api.opendnd.org/v1/auth
 POST   https://api.opendnd.org/v1/import
 
@@ -194,8 +194,8 @@ PUT    https://api.opendnd.org/v1/campaigns/:campaign_id
 DELETE https://api.opendnd.org/v1/campaigns/:campaign_id
 ```
 
-## Generic
-These are generic routes for the API.
+## Core
+These are the routes for the core API.
 
 #### `POST   https://api.opendnd.org/v1/auth`
 Authenticate the user account to the API.
