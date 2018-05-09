@@ -1,0 +1,26 @@
+{
+  "name": "names",
+  "version": "1.0.0",
+  "description": "Names are used for everything from naming characters to naming your domains, buildings, streets and more.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npm run test:mocha && npm run test:lint",
+    "test:mocha": "./node_modules/mocha/bin/mocha --reporter spec 'test/**/*.js'",
+    "test:lint": "./node_modules/eslint/bin/eslint.js ."
+  },
+  "author": "Drew Morris <dhmorris@gmail.com> (http://github.com/drewry)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "opendnd": "^0.4.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^4.0.0",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.2.0"
+  }
+}
