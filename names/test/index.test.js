@@ -5,7 +5,6 @@ const server = require('../index');
 chai.use(chaiHttp);
 
 describe('names', () => {
-
   it('POST https://api.opendnd.org/v1/names', (done) => {
     chai
     .request(server)
