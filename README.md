@@ -4,39 +4,39 @@ This is a specification for the OpenDnD API (https://api.opendnd.org) which can 
 ## Roadmap
 Below are a list of API routes that are on the roadmap:
 
-### Core
+### [Core](core/README.md)
 - [ ] `POST   https://api.opendnd.org/v1/auth`
 - [ ] `POST   https://api.opendnd.org/v1/import`
 
-### Items
+### [Items](items/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/items`
 - [ ] `POST   https://api.opendnd.org/v1/items`
 - [ ] `GET    https://api.opendnd.org/v1/items/:item_id`
 - [ ] `PUT    https://api.opendnd.org/v1/items/:item_id`
 - [ ] `DELETE https://api.opendnd.org/v1/items/:item_id`
 
-### Races
+### [Races](races/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/races`
 - [ ] `POST   https://api.opendnd.org/v1/races`
 - [ ] `GET    https://api.opendnd.org/v1/races/:race_id`
 - [ ] `PUT    https://api.opendnd.org/v1/races/:race_id`
 - [ ] `DELETE https://api.opendnd.org/v1/races/:race_id`
 
-### Backgrounds
+### [Backgrounds](backgrounds/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/backgrounds`
 - [ ] `POST   https://api.opendnd.org/v1/backgrounds`
 - [ ] `GET    https://api.opendnd.org/v1/backgrounds/:background_id`
 - [ ] `PUT    https://api.opendnd.org/v1/backgrounds/:background_id`
 - [ ] `DELETE https://api.opendnd.org/v1/backgrounds/:background_id`
 
-### Classes
+### [Classes](classes/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/classes`
 - [ ] `POST   https://api.opendnd.org/v1/classes`
 - [ ] `GET    https://api.opendnd.org/v1/classes/:class_id`
 - [ ] `PUT    https://api.opendnd.org/v1/classes/:class_id`
 - [ ] `DELETE https://api.opendnd.org/v1/classes/:class_id`
 
-### Domains
+### [Domains](domains/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/domains`
 - [ ] `POST   https://api.opendnd.org/v1/domains`
 - [ ] `GET    https://api.opendnd.org/v1/domains/:domain_id`
@@ -49,7 +49,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/domains/:domain_id`
 - [ ] `DELETE https://api.opendnd.org/v1/domains/:domain_id`
 
-### Dynasties
+### [Dynasties](dynasties/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/dynasties`
 - [ ] `POST   https://api.opendnd.org/v1/dynasties`
 - [ ] `GET    https://api.opendnd.org/v1/dynasties/:dynasty_id`
@@ -62,7 +62,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/dynasties/:dynasty_id`
 - [ ] `DELETE https://api.opendnd.org/v1/dynasties/:dynasty_id`
 
-### Factions
+### [Factions](factions/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/factions`
 - [ ] `POST   https://api.opendnd.org/v1/factions`
 - [ ] `GET    https://api.opendnd.org/v1/factions/:faction_id`
@@ -75,7 +75,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/factions/:faction_id`
 - [ ] `DELETE https://api.opendnd.org/v1/factions/:faction_id`
 
-### Persons
+### [Persons](persons/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/persons`
 - [ ] `POST   https://api.opendnd.org/v1/persons`
 - [ ] `GET    https://api.opendnd.org/v1/persons/:person_id`
@@ -86,7 +86,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/persons/:person_id`
 - [ ] `DELETE https://api.opendnd.org/v1/persons/:person_id`
 
-### DNA
+### [DNA](dna/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/dna`
 - [ ] `POST   https://api.opendnd.org/v1/dna`
 - [ ] `GET    https://api.opendnd.org/v1/dna/:dna_id`
@@ -94,7 +94,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/dna/:dna_id`
 - [ ] `DELETE https://api.opendnd.org/v1/dna/:dna_id`
 
-### Sigils
+### [Sigils](sigils/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/sigils`
 - [ ] `POST   https://api.opendnd.org/v1/sigils`
 - [ ] `GET    https://api.opendnd.org/v1/sigils/:sigil_id`
@@ -102,7 +102,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/sigils/:sigil_id`
 - [ ] `DELETE https://api.opendnd.org/v1/sigils/:sigil_id`
 
-### Names
+### [Names](names/README.md)
 - [ ] `POST   https://api.opendnd.org/v1/names`
 - [ ] `GET    https://api.opendnd.org/v1/names/themes`
 - [ ] `POST   https://api.opendnd.org/v1/names/themes`
@@ -110,7 +110,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/names/themes/:theme_id`
 - [ ] `DELETE https://api.opendnd.org/v1/names/themes/:theme_id`
 
-### Buildings
+### [Buildings](buildings/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/buildings`
 - [ ] `POST   https://api.opendnd.org/v1/buildings`
 - [ ] `GET    https://api.opendnd.org/v1/buildings/:building_id`
@@ -120,7 +120,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/buildings/:building_id`
 - [ ] `DELETE https://api.opendnd.org/v1/buildings/:building_id`
 
-### Encounters
+### [Encounters](encounters/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/encounters`
 - [ ] `POST   https://api.opendnd.org/v1/encounters`
 - [ ] `GET    https://api.opendnd.org/v1/encounters/:encounter_id`
@@ -128,7 +128,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/encounters/:encounter_id`
 - [ ] `DELETE https://api.opendnd.org/v1/encounters/:encounter_id`
 
-### Monsters
+### [Monsters](monsters/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/monsters`
 - [ ] `POST   https://api.opendnd.org/v1/monsters`
 - [ ] `GET    https://api.opendnd.org/v1/monsters/:monster_id`
@@ -136,7 +136,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/monsters/:monster_id`
 - [ ] `DELETE https://api.opendnd.org/v1/monsters/:monster_id`
 
-### Traps
+### [Traps](traps/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/traps`
 - [ ] `POST   https://api.opendnd.org/v1/traps`
 - [ ] `GET    https://api.opendnd.org/v1/traps/:trap_id`
@@ -144,7 +144,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/traps/:trap_id`
 - [ ] `DELETE https://api.opendnd.org/v1/traps/:trap_id`
 
-### Dungeons
+### [Dungeons](dungeons/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/dungeons`
 - [ ] `POST   https://api.opendnd.org/v1/dungeons`
 - [ ] `GET    https://api.opendnd.org/v1/dungeons/:dungeon_id`
@@ -152,7 +152,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/dungeons/:dungeon_id`
 - [ ] `DELETE https://api.opendnd.org/v1/dungeons/:dungeon_id`
 
-### Quests
+### [Quests](quests/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/quests`
 - [ ] `POST   https://api.opendnd.org/v1/quests`
 - [ ] `GET    https://api.opendnd.org/v1/quests/:quest_id`
@@ -160,7 +160,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/quests/:quest_id`
 - [ ] `DELETE https://api.opendnd.org/v1/quests/:quest_id`
 
-### Dialogs
+### [Dialogs](dialogs/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/dialogs`
 - [ ] `POST   https://api.opendnd.org/v1/dialogs`
 - [ ] `GET    https://api.opendnd.org/v1/dialogs/:dialog_id`
@@ -168,7 +168,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/dialogs/:dialog_id`
 - [ ] `DELETE https://api.opendnd.org/v1/dialogs/:dialog_id`
 
-### Stories
+### [Stories](stories/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/stories`
 - [ ] `POST   https://api.opendnd.org/v1/stories`
 - [ ] `GET    https://api.opendnd.org/v1/stories/:story_id`
@@ -176,7 +176,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/stories/:story_id`
 - [ ] `DELETE https://api.opendnd.org/v1/stories/:story_id`
 
-### Calendars
+### [Calendars](calendars/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/calendars`
 - [ ] `POST   https://api.opendnd.org/v1/calendars`
 - [ ] `GET    https://api.opendnd.org/v1/calendars/:calendar_id`
@@ -184,7 +184,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/calendars/:calendar_id`
 - [ ] `DELETE https://api.opendnd.org/v1/calendars/:calendar_id`
 
-### Campaigns
+### [Campaigns](campaigns/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/campaigns`
 - [ ] `POST   https://api.opendnd.org/v1/campaigns`
 - [ ] `GET    https://api.opendnd.org/v1/campaigns/:campaign_id`
