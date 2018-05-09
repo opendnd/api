@@ -103,7 +103,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `DELETE https://api.opendnd.org/v1/sigils/:sigil_id`
 
 ### [Names](names/README.md)
-- [ ] `POST   https://api.opendnd.org/v1/names`
+- [x] `POST   https://api.opendnd.org/v1/names`
 - [ ] `GET    https://api.opendnd.org/v1/names/themes`
 - [ ] `POST   https://api.opendnd.org/v1/names/themes`
 - [ ] `GET    https://api.opendnd.org/v1/names/themes/:theme_id`

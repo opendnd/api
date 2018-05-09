@@ -12,6 +12,7 @@
   "author": "Drew Morris <dhmorris@gmail.com> (http://github.com/drewry)",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "opendnd": "^0.4.3"
   },
