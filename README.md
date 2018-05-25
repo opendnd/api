@@ -104,11 +104,11 @@ Below are a list of API routes that are on the roadmap:
 
 ### [Names](names/README.md)
 - [x] `POST   https://api.opendnd.org/v1/names`
-- [ ] `GET    https://api.opendnd.org/v1/names/themes`
-- [ ] `POST   https://api.opendnd.org/v1/names/themes`
-- [ ] `GET    https://api.opendnd.org/v1/names/themes/:theme_id`
-- [ ] `PUT    https://api.opendnd.org/v1/names/themes/:theme_id`
-- [ ] `DELETE https://api.opendnd.org/v1/names/themes/:theme_id`
+- [x] `GET    https://api.opendnd.org/v1/names/themes`
+- [x] `POST   https://api.opendnd.org/v1/names/themes`
+- [x] `GET    https://api.opendnd.org/v1/names/themes/:theme_id`
+- [x] `PUT    https://api.opendnd.org/v1/names/themes/:theme_id`
+- [x] `DELETE https://api.opendnd.org/v1/names/themes/:theme_id`
 
 ### [Buildings](buildings/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/buildings`
@@ -216,7 +216,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/campaigns/:campaign_id`
 - [ ] `DELETE https://api.opendnd.org/v1/campaigns/:campaign_id`
 
-### Spells
+### [Spells](spells/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/spells`
 - [ ] `POST   https://api.opendnd.org/v1/spells`
 - [ ] `GET    https://api.opendnd.org/v1/spells/:spell_id`
