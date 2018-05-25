@@ -1,6 +1,9 @@
 # Names
 Names are used for everything from naming characters to naming your domains, buildings, streets and more.
 
+#### `GET https://api.opendnd.org/v1/names`
+Get the API version.
+
 #### `POST https://api.opendnd.org/v1/names`
 Generate a name with options.
 

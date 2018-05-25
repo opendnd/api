@@ -1,5 +1,5 @@
 # Factions
-Factions are the political powers that form your world and give depth to your quests and domains.
+Factions are the political powers that influence your world and give depth to your quests and domains.
 
 #### `GET    https://api.opendnd.org/v1/factions`
 Get all factions.

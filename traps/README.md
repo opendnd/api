@@ -1,5 +1,5 @@
 # Traps
-Traps make your dungeons more challenging by forcing the players to work together.
+Traps and puzzles make your dungeons more challenging by forcing the players to work together.
 
 #### `GET    https://api.opendnd.org/v1/traps`
 Get all traps.

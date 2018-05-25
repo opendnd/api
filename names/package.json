@@ -1,20 +1,29 @@
 {
-  "name": "names",
+  "name": "opendnd-api-names",
+  "title": "OpenDnD Names API",
   "version": "1.0.0",
   "description": "Names are used for everything from naming characters to naming your domains, buildings, streets and more.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node lib/index.js",
     "test": "npm run test:mocha && npm run test:lint",
-    "test:mocha": "./node_modules/mocha/bin/mocha --reporter spec 'test/**/*.js'",
-    "test:lint": "./node_modules/eslint/bin/eslint.js ."
+    "test:mocha": "NODE_ENV=test ./node_modules/mocha/bin/mocha --reporter spec 'test/**/*.js'",
+    "test:lint": "./node_modules/eslint/bin/eslint.js .",
+    "swagger": "node lib/swagger.js"
   },
   "author": "Drew Morris <dhmorris@gmail.com> (http://github.com/drewry)",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
-    "opendnd": "^0.4.3"
+    "express-jwt": "^5.3.1",
+    "jwks-rsa": "^1.2.1",
+    "mongoose": "^5.1.2",
+    "opendnd": "^0.4.3",
+    "swagger-ui-express": "^3.0.9",
+    "uuid": "^3.2.1",
+    "winston": "^3.0.0-rc5"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -22,6 +31,12 @@
     "eslint": "^3.16.1",
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "mocha": "^3.2.0"
+    "express-swagger-generator": "^1.1.1",
+    "mocha": "^3.2.0",
+    "mockgoose": "^7.3.5",
+    "mongoose-mock": "^0.4.0",
+    "proxyquire": "^2.0.1",
+    "sinon": "^5.0.10",
+    "sinon-mongoose": "^2.1.1"
   }
 }

@@ -1,5 +1,5 @@
 # Items
-Items are used for many different purposes, such as equipment to a person, stored items in a building or container, used in a trap and many other uses.
+Items are used for many different purposes, such as equipment to a person, clothing, weapons, food, stored items in a building or container, used in a trap and many other uses.
 
 #### `GET    https://api.opendnd.org/v1/items`
 Get all items.

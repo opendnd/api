@@ -1,0 +1,183 @@
+{
+  "info": {
+    "title": "OpenDnD Names API",
+    "version": "1.0.0",
+    "description": "Names are used for everything from naming characters to naming your domains, buildings, streets and more."
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "jwt": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "security": [
+    {
+      "jwt": []
+    }
+  ],
+  "host": "localhost:3001",
+  "swagger": "2.0",
+  "paths": {
+    "/": {
+      "get": {
+        "parameters": [],
+        "summary": "Get the API version. Auth not required.",
+        "tags": [
+          "default"
+        ],
+        "responses": {
+          "200 ": {
+            "description": " version",
+            "type": "string"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "options for theme, type and number",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "summary": "Generate a name with options. Auth not required.",
+        "tags": [
+          "default"
+        ],
+        "responses": {
+          "200 ": {
+            "description": " name",
+            "type": "object"
+          }
+        }
+      }
+    },
+    "/themes": {
+      "get": {
+        "parameters": [],
+        "summary": "Get all themes for names.",
+        "tags": [
+          "default"
+        ],
+        "responses": {
+          "200 ": {
+            "description": " themes",
+            "type": "array"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "options for male, female and dominia arrays",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "summary": "Create a theme for names.",
+        "tags": [
+          "default"
+        ],
+        "responses": {
+          "200 ": {
+            "description": " theme",
+            "type": "object"
+          }
+        }
+      }
+    },
+    "/themes/{themeID}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "themeID",
+            "in": "path",
+            "description": "themeID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "summary": "Get a theme.",
+        "tags": [
+          "default"
+        ],
+        "responses": {
+          "200 ": {
+            "description": " theme",
+            "type": "object"
+          }
+        }
+      },
+      "put": {
+        "parameters": [
+          {
+            "name": "themeID",
+            "in": "path",
+            "description": "themeID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "options for male, female and dominia arrays",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "summary": "Update a theme.",
+        "tags": [
+          "default"
+        ],
+        "responses": {
+          "200 ": {
+            "description": " theme",
+            "type": "object"
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "themeID",
+            "in": "path",
+            "description": "themeID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "summary": "Delete a theme.",
+        "tags": [
+          "default"
+        ],
+        "responses": {
+          "200 ": {
+            "description": " ok",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "tags": [
+    {
+      "name": "default",
+      "description": ""
+    }
+  ]
+}
