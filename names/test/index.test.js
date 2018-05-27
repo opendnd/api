@@ -9,19 +9,24 @@ chai.use(chaiHttp);
 // mocks
 const userID = 'test12345@tests';
 const themeID = 'xxx-xx-xxx';
+const groupID = 'test';
 const jwtCheckMock = (req, res, next) => next();
-const addUserIDMock = (req, res, next) => { 
-  req.userID = 'test12345@tests';
+const addUserMetaMock = (req, res, next) => { 
+  req.userID = userID;
+  req.permissions = ['read:names', 'write:names'];
+  req.groups = [groupID];
+  req.roles = ['admin'];
+  req.groupID = groupID;
   next();
 }
 const uuidMock = () => themeID;
 const Theme = require('../lib/models/Theme');
 const ThemeMock = sinon.mock(Theme)
-ThemeMock.expects('find').withArgs({ userID }).yields(null, []);
-ThemeMock.expects('create').withArgs({ userID, themeID, male: [], female: [], dominia: [] }).yields(null, {});
-ThemeMock.expects('findOne').withArgs({ userID, themeID }).yields(null, {});
-ThemeMock.expects('findOneAndUpdate').withArgs({ userID, themeID }, { male: [], female: [], dominia: [] }, { upsert: true, new: true }).yields(null, {});
-ThemeMock.expects('deleteOne').withArgs({ userID, themeID }).yields(null);
+ThemeMock.expects('find').withArgs({ groupID }).yields(null, []);
+ThemeMock.expects('create').withArgs({ groupID, themeID, male: [], female: [], dominia: [] }).yields(null, {});
+ThemeMock.expects('findOne').withArgs({ groupID, themeID }).yields(null, {});
+ThemeMock.expects('findOneAndUpdate').withArgs({ groupID, themeID }, { male: [], female: [], dominia: [] }, { upsert: true, new: true }).yields(null, {});
+ThemeMock.expects('deleteOne').withArgs({ groupID, themeID }).yields(null);
 const dbMock = {
   Theme,
 };
@@ -30,7 +35,7 @@ const dbMock = {
 const routes = proxyquire('../lib/routes', {
   './db': dbMock,
   './jwtCheck': jwtCheckMock,
-  './addUserID': addUserIDMock,
+  './addUserMeta': addUserMetaMock,
   'uuid/v4': uuidMock,
 });
 const server = proxyquire('../lib/index', {

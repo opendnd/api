@@ -18,9 +18,9 @@ const Theme = new Schema({
     type: String,
     required: [true, 'Theme must have a UUID'],
   },
-  userID: {
+  groupID: {
     type: String,
-    required: [true, 'Theme must be assigned to a user'],
+    required: [true, 'Theme must be assigned to a group'],
   },
 });
 

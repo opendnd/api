@@ -2,6 +2,7 @@ require('dotenv').config();
 const swaggerConfig = require('../swagger');
 const swaggerUi = require('swagger-ui-express');
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const logger = require('./logger');
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 // middleware
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
 // routes

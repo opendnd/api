@@ -9,6 +9,7 @@ const jwtCheck = jwt({
     jwksRequestsPerMinute: 5,
     jwksUri: process.env.AUTH0_URI,
   }),
+  audience: process.env.AUTH0_AUDIENCE,
   issuer: process.env.AUTH0_ISSUER,
   algorithms: process.env.AUTH0_ALGOS.split(','),
 });
