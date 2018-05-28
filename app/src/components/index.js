@@ -22,6 +22,12 @@ import IconButton from "./CustomButtons/IconButton.jsx";
 import CustomInput from "./CustomInput/CustomInput.jsx";
 
 // ##############################
+// // // CustomSelect
+// #############################
+
+import CustomSelect from "./CustomSelect/CustomSelect.js";
+
+// ##############################
 // // // Footer
 // #############################
 
@@ -87,7 +93,7 @@ export {
   RegularCard,
   StatsCard,
   TasksCard,
-  // CustomButtons
+  CustomSelect,
   Button,
   IconButton,
   // CustomInput

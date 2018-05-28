@@ -1,6 +1,6 @@
-import DashboardPage from 'views/Dashboard/Dashboard.jsx';
-import UserProfile from 'views/UserProfile/UserProfile.jsx';
-import Names from 'views/Names/Names.jsx';
+import DashboardPage from 'views/Dashboard/Dashboard';
+import UserProfile from 'views/UserProfile/UserProfile';
+import Names from 'views/Names/Names';
 
 import {
   Dashboard,
