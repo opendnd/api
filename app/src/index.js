@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Switch } from 'react-router-dom';
 import Callback from 'views/Callback/Callback';
-import Auth from 'views/Auth/Auth';
+import Auth from 'components/Auth/Auth';
 import 'assets/css/material-dashboard-react.css';
 import indexRoutes from 'routes/index.jsx';
 import { createBrowserHistory } from 'history';
@@ -26,6 +26,7 @@ ReactDOM.render(
       }}/>
       <Route path="/logout" render={(props) => {
         auth.logout();
+        hist.replace('/dashboard');
         return <Callback {...props} />;
       }}/>
       {indexRoutes.map((prop, key) => {

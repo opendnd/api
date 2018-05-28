@@ -1,49 +1,45 @@
-import DashboardPage from "views/Dashboard/Dashboard.jsx";
-import UserProfile from "views/UserProfile/UserProfile.jsx";
-import TableList from "views/TableList/TableList.jsx";
-import Typography from "views/Typography/Typography.jsx";
-import Icons from "views/Icons/Icons.jsx";
+import DashboardPage from 'views/Dashboard/Dashboard.jsx';
+import UserProfile from 'views/UserProfile/UserProfile.jsx';
+import Names from 'views/Names/Names.jsx';
 
 import {
   Dashboard,
   Person,
-  ContentPaste,
-  LibraryBooks,
-  BubbleChart,
-  LocationOn,
-  Notifications
-} from "@material-ui/icons";
+  Label,
+} from '@material-ui/icons';
 
 const dashboardRoutes = [
   {
-    path: "/dashboard",
-    sidebarName: "Dashboard",
-    navbarName: "Dashboard",
+    path: '/dashboard',
+    sidebarName: 'Dashboard',
+    navbarName: 'Dashboard',
     icon: Dashboard,
+    sidebar: true,
     component: DashboardPage
   },
   {
-    path: "/user",
-    sidebarName: "User Profile",
-    navbarName: "Profile",
+    path: '/user',
+    sidebarName: 'User Profile',
+    navbarName: 'Profile',
     icon: Person,
+    sidebar: false,
     component: UserProfile
   },
   {
-    path: "/table",
-    sidebarName: "Table List",
-    navbarName: "Table List",
-    icon: ContentPaste,
-    component: TableList
+    path: '/names',
+    sidebarName: 'Names',
+    navbarName: 'Names',
+    icon: Label,
+    sidebar: true,
+    component: Names
   },
-  {
-    path: "/typography",
-    sidebarName: "Typography",
-    navbarName: "Typography",
-    icon: LibraryBooks,
-    component: Typography
-  },
-  { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
+  { 
+    redirect: true,
+    sidebar: false,
+    path: '/',
+    to: '/dashboard',
+    navbarName: 'Redirect' 
+  }
 ];
 
 export default dashboardRoutes;

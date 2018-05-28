@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js';
-import { AUTH_CONFIG } from 'views/Auth/auth0-variables';
+import { AUTH_CONFIG } from 'components/Auth/auth0-variables';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
@@ -42,8 +42,6 @@ export default class Auth {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    // navigate to the home route
-    this.props.history.replace('/dashboard');
   }
 
   logout() {
@@ -51,8 +49,6 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    // navigate to the home route
-    this.props.history.replace('/dashboard');
   }
 
   isAuthenticated() {
