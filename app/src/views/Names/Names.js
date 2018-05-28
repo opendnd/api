@@ -5,6 +5,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Divider,
 } from 'material-ui';
 import { 
   Button,
@@ -19,26 +20,35 @@ class Names extends React.Component {
   state = {
     type: '',
     theme: '',
+    newTheme: {
+      name: '',
+      male: '',
+      female: '',
+      dominia: '',
+    },
     number: '',
     names: [],
     types: ['Male', 'Female', 'Dominia'],
-    themes: ['Classical', 'Asian', 'Medieval'],
+    themes: [],
   }
 
   componentWillMount() {
-    // this.getThemes();
+    this.getThemes();
   }
 
   getThemes = () => {
     client.names.themes.index().then((res) => {
+      const themes = res.data;
+
       this.setState({
-        themes: res.data,
+        themes,
       });
     });
   }
 
-  createName = () => {
+  handleGenerate = (event) => {
     const { type, theme, number } = this.state;
+
     client.names.create({
       type,
       theme,
@@ -52,16 +62,40 @@ class Names extends React.Component {
     });
   }
 
-  handleGenerate = (event) => {
-    this.createName();
+  handleCreateTheme = (event) => {
+    const { newTheme } = this.state;
+    const { name, male, female, dominia } = newTheme;
+
+    client.names.themes.create({
+      name,
+      male: male.split(','),
+      female: female.split(','),
+      dominia: dominia.split(','),
+    }).then((res) => {
+      console.log(res);
+    });
   }
 
   handleChange = (event) => {
+    if (event.target.name.includes('newTheme.')) {
+      const nextState = this.state;
+      nextState.newTheme[event.target.name.split('.')[1]] = event.target.value;
+      return this.setState(nextState);
+    }
+
     this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
-    const { types, type, themes, theme, number, names } = this.state;
+    const { types, type, themes, theme, newTheme, number, names } = this.state;
+    const tableData = themes.map((theme) => {
+      return [
+        theme.name,
+        theme.male.join(', '),
+        theme.female.join(', '),
+        theme.dominia.join(', '),
+      ];
+    });
 
     return (
       <Grid container>
@@ -76,7 +110,7 @@ class Names extends React.Component {
                     <CustomSelect
                       labelText='Theme'
                       id='theme'
-                      options={themes}
+                      options={themes.map(theme => theme.name)}
                       random={true}
                       inputProps={{
                         name: 'theme',
@@ -147,18 +181,80 @@ class Names extends React.Component {
             cardTitle='Themes'
             cardSubtitle='Here are the themes available for your names'
             content={
-              <Table
-                tableHeaderColor='primary'
-                tableHead={['Theme', 'Male Names', 'Female Names', 'Dominia Names']}
-                tableData={[
-                  [
-                    'Classical',
-                    'Atticus, Augustus, Cassius, Cato, Cyprian, Felix, Julius, Justus, Lucius, Magnus, Marcus, Maximus, Octavius, Philo, Remus, Rufus, Septimus, Tiberius, Urban',
-                    'Aeliana, Antonia, Augusta, Aurelia, Camilla, Cassia, Cecilia, Decima, Drusilla, Flavia, Florentina, Junia, Laelia, Laurentia, Livia, Marilla, Octavia, Priscilla, Sabina, Tanaquil, Tatiana, Tullia, Valentina, Vita',
-                    'Rome, Ariminum, Belum, Pompeii, Forum, Genava, Capua, Dyrrachium, Spalatum, Trapezus, Nauportus, Nicomedia, Nicaea, Mediolanum, Barium, Patavium, Nicomedia, Neviodunum, Constantinopolis, Abdera, Aegae, Heraclea, Ithaca, Kallipolis, Neapolis',
-                  ],
-                ]}
-              />
+              <div>
+                <Table
+                  tableHeaderColor='primary'
+                  tableHead={['Theme', 'Male Names', 'Female Names', 'Dominia Names']}
+                  tableData={tableData}
+                />
+                <Divider />
+                <h4>Create Theme</h4>
+                <Grid container>
+                  <ItemGrid xs={12} sm={12} md={12}>
+                    <CustomInput
+                      labelText='Theme Name'
+                      id='theme-name'
+                      inputProps={{
+                        name: 'newTheme.name',
+                        value: newTheme.name,
+                        onChange: this.handleChange,
+                      }}
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </ItemGrid>
+                  <ItemGrid xs={12} sm={12} md={4}>
+                    <CustomInput
+                      labelText="Male Names"
+                      id='theme-male'
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        multiline: true,
+                        rows: 5,
+                        name: 'newTheme.male',
+                        value: newTheme.male,
+                        onChange: this.handleChange,
+                      }}
+                    />
+                  </ItemGrid>
+                  <ItemGrid xs={12} sm={12} md={4}>
+                    <CustomInput
+                      labelText="Female Names"
+                      id='theme-female'
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        multiline: true,
+                        rows: 5,
+                        name: 'newTheme.female',
+                        value: newTheme.female,
+                        onChange: this.handleChange,
+                      }}
+                    />
+                  </ItemGrid>
+                  <ItemGrid xs={12} sm={12} md={4}>
+                    <CustomInput
+                      labelText="Dominia Names"
+                      id='theme-dominia'
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        multiline: true,
+                        rows: 5,
+                        name: 'newTheme.dominia',
+                        value: newTheme.dominia,
+                        onChange: this.handleChange,
+                      }}
+                    />
+                  </ItemGrid>
+                </Grid>
+                <Button color='primary' onClick={this.handleCreateTheme}>Create Theme</Button>
+              </div>
             }
           />
         </ItemGrid>

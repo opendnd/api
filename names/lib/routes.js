@@ -71,11 +71,11 @@ module.exports.setup = (app) => {
    */
   app.post('/themes', [jwtCheck, addUserMeta, writeNames], (req, res) => {
     const { groupID, body } = req;
-    const { male = [], female = [], dominia = [] } = body;
+    const { male = [], female = [], dominia = [], name } = body;
     const themeID = uuidv4();
 
     // create
-    Theme.create({ groupID, themeID, male, female, dominia }, (err, theme) => {
+    Theme.create({ groupID, themeID, male, female, dominia, name }, (err, theme) => {
       if (err) return res.send(err);
       return res.send(theme);
     });

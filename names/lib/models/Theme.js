@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Theme = new Schema({
+  name: {
+    type: String,
+    required: [true, 'You must include a name for the theme'],
+  },
   male: {
     type: [String],
     required: [true, 'You must include a male array of names'],
