@@ -10,26 +10,32 @@ import {
 import { 
   Button,
   RegularCard,
-  Table,
+  ManageTable,
   ItemGrid,
   CustomInput,
   CustomSelect,
 } from 'components';
 
+const defaultName = {
+  type: '',
+  theme: '',
+  number: '',
+};
+
+const defaultTheme = {
+  name: '',
+  male: '',
+  female: '',
+  dominia: '',
+};
+
 class Names extends React.Component {
   state = {
-    type: '',
-    theme: '',
-    newTheme: {
-      name: '',
-      male: '',
-      female: '',
-      dominia: '',
-    },
-    number: '',
-    names: [],
+    curName: Object.assign({}, defaultName),
+    curTheme: Object.assign({}, defaultTheme),
     types: ['Male', 'Female', 'Dominia'],
     themes: [],
+    names: [],
   }
 
   componentWillMount() {
@@ -46,8 +52,8 @@ class Names extends React.Component {
     });
   }
 
-  handleGenerate = (event) => {
-    const { type, theme, number } = this.state;
+  handleGenerate = (e) => {
+    const { type, theme, number } = this.state.curName;
 
     client.names.create({
       type,
@@ -62,32 +68,133 @@ class Names extends React.Component {
     });
   }
 
-  handleCreateTheme = (event) => {
-    const { newTheme } = this.state;
-    const { name, male, female, dominia } = newTheme;
+  handleReset = (e) => {
+    this.setState({ 
+      names: [],
+      curName: Object.assign({}, defaultName),
+    });
+  }
 
+  handleResetTheme = (e) => {
+    this.setState({ 
+      mode: undefined,
+      curTheme: Object.assign({}, defaultTheme),
+    });
+  }
+
+  handleSave = (e) => {
+    const { mode } = this.state;
+    if (mode === 'edit') {
+      this.handleSaveTheme();
+    } else {
+      this.handleCreateTheme();
+    }
+  }
+
+  handleCreateTheme = () => {
+    const { curTheme, themes } = this.state;
+    const { name, male, female, dominia } = curTheme;
+
+    // create the theme
     client.names.themes.create({
       name,
       male: male.split(','),
       female: female.split(','),
       dominia: dominia.split(','),
     }).then((res) => {
-      console.log(res);
+      if (res.data) {
+        this.setState({
+          themes: [
+            ...themes,
+            res.data,
+          ],
+          curTheme: Object.assign({}, defaultTheme),
+        });
+      }
     });
   }
 
-  handleChange = (event) => {
-    if (event.target.name.includes('newTheme.')) {
-      const nextState = this.state;
-      nextState.newTheme[event.target.name.split('.')[1]] = event.target.value;
+  handleSaveTheme = () => {
+    const { curTheme, themes, themeKey } = this.state;
+    const theme = themes[themeKey];
+    const { themeID } = theme;
+    const { name, male, female, dominia } = curTheme;
+
+    // update the theme
+    client.names.themes.update(themeID, {
+      name,
+      male: male.split(','),
+      female: female.split(','),
+      dominia: dominia.split(','),
+    }).then((res) => {
+      if (res.data) {
+        this.setState({
+          themes: themes.map((item, index) => {
+            if (index === themeKey) {
+              return Object.assign({}, res.data);
+            }
+            return item;
+          }),
+          themeKey: undefined,
+          mode: undefined,
+          curTheme: Object.assign({}, defaultTheme),
+        });
+      }
+    });
+  }
+
+  handleEdit = (key) => {
+    const { themes } = this.state;
+    const theme = themes[key];
+    const { name, male, female, dominia } = theme;
+
+    this.setState({
+      curTheme: {
+        name,
+        male: male.join(', '),
+        female: female.join(', '),
+        dominia: dominia.join(', '),
+      },
+      mode: 'edit',
+      themeKey: key,
+    });
+  }
+
+  handleDelete = (key) => {
+    const { themes } = this.state;
+    const theme = themes[key];
+    const { themeID  } = theme;
+
+    // delete the theme
+    client.names.themes.delete(themeID).then((res) => {
+      if (res.data === 'ok') {
+        this.setState({
+          themes: [
+            ...themes.slice(0, key),
+            ...themes.slice(key + 1),
+          ],
+        });
+      }
+    });
+  }
+
+  handleChange = (e) => {
+    const nextState = this.state;
+    const { target } = e;
+    const { name, value } = target;
+
+    if (name.includes('.')) {
+      const parts = name.split('.');
+      nextState[parts[0]][parts[1]] = value;
       return this.setState(nextState);
     }
 
-    this.setState({ [event.target.name]: event.target.value });
+    nextState[name] = value;
+    this.setState(nextState);
   }
 
   render() {
-    const { types, type, themes, theme, newTheme, number, names } = this.state;
+    const { types, themes, curName, curTheme, names, mode } = this.state;
     const tableData = themes.map((theme) => {
       return [
         theme.name,
@@ -113,8 +220,8 @@ class Names extends React.Component {
                       options={themes.map(theme => theme.name)}
                       random={true}
                       inputProps={{
-                        name: 'theme',
-                        value: theme,
+                        name: 'curName.theme',
+                        value: curName.theme,
                         onChange: this.handleChange,
                       }}
                       formControlProps={{
@@ -129,8 +236,8 @@ class Names extends React.Component {
                       options={types}
                       random={true}
                       inputProps={{
-                        name: 'type',
-                        value: type,
+                        name: 'curName.type',
+                        value: curName.type,
                         onChange: this.handleChange
                       }}
                       formControlProps={{
@@ -143,8 +250,8 @@ class Names extends React.Component {
                       labelText='Number'
                       id='number'
                       inputProps={{
-                        name: 'number',
-                        value: number,
+                        name: 'curName.number',
+                        value: curName.number,
                         onChange: this.handleChange,
                       }}
                       formControlProps={{
@@ -173,30 +280,37 @@ class Names extends React.Component {
                 </Grid>
               </div>
             }
-            footer={<Button color='primary' onClick={this.handleGenerate}>Generate</Button>}
+            footer={(
+              <div>
+                <Button color="primary" onClick={this.handleGenerate}>Generate</Button>
+                <Button color="transparent" disabled={(names.length === 0)} onClick={this.handleReset}>Clear</Button>
+              </div>
+            )}
           />
         </ItemGrid>
         <ItemGrid xs={12} sm={12} md={12}>
           <RegularCard
             cardTitle='Themes'
-            cardSubtitle='Here are the themes available for your names'
+            cardSubtitle='Here are the themes available for name generating'
             content={
               <div>
-                <Table
+                <ManageTable
                   tableHeaderColor='primary'
                   tableHead={['Theme', 'Male Names', 'Female Names', 'Dominia Names']}
                   tableData={tableData}
+                  onEdit={this.handleEdit}
+                  onDelete={this.handleDelete}
                 />
                 <Divider />
-                <h4>Create Theme</h4>
+                <h4>{ (mode === 'edit') ? 'Update Theme' : 'Create Theme' }</h4>
                 <Grid container>
                   <ItemGrid xs={12} sm={12} md={12}>
                     <CustomInput
                       labelText='Theme Name'
                       id='theme-name'
                       inputProps={{
-                        name: 'newTheme.name',
-                        value: newTheme.name,
+                        name: 'curTheme.name',
+                        value: curTheme.name,
                         onChange: this.handleChange,
                       }}
                       formControlProps={{
@@ -214,8 +328,8 @@ class Names extends React.Component {
                       inputProps={{
                         multiline: true,
                         rows: 5,
-                        name: 'newTheme.male',
-                        value: newTheme.male,
+                        name: 'curTheme.male',
+                        value: curTheme.male,
                         onChange: this.handleChange,
                       }}
                     />
@@ -230,8 +344,8 @@ class Names extends React.Component {
                       inputProps={{
                         multiline: true,
                         rows: 5,
-                        name: 'newTheme.female',
-                        value: newTheme.female,
+                        name: 'curTheme.female',
+                        value: curTheme.female,
                         onChange: this.handleChange,
                       }}
                     />
@@ -246,14 +360,15 @@ class Names extends React.Component {
                       inputProps={{
                         multiline: true,
                         rows: 5,
-                        name: 'newTheme.dominia',
-                        value: newTheme.dominia,
+                        name: 'curTheme.dominia',
+                        value: curTheme.dominia,
                         onChange: this.handleChange,
                       }}
                     />
                   </ItemGrid>
                 </Grid>
-                <Button color='primary' onClick={this.handleCreateTheme}>Create Theme</Button>
+                <Button color='primary' onClick={this.handleSave}>{ (mode === 'edit') ? 'Update Theme' : 'Create Theme' }</Button>
+                <Button color="transparent" onClick={this.handleResetTheme}>Cancel</Button>
               </div>
             }
           />

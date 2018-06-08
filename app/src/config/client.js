@@ -13,6 +13,8 @@ const names = {
   themes: {
     index: () => axios.get(`${namesAPI}/themes/`),
     create: (data) => axios.post(`${namesAPI}/themes/`, data),
+    update: (themeID, data) => axios.put(`${namesAPI}/themes/${themeID}`, data),
+    delete: (themeID) => axios.delete(`${namesAPI}/themes/${themeID}`),
   },
 };
 

@@ -109,12 +109,12 @@ module.exports.setup = (app) => {
   app.put('/themes/:themeID', [jwtCheck, addUserMeta, writeNames], (req, res) => {
     const { groupID, params, body } = req;
     const { themeID } = params;
-    const { male = [], female = [], dominia = [] } = body;
+    const { male = [], female = [], dominia = [], name } = body;
 
     // upsert
     Theme.findOneAndUpdate(
       { groupID, themeID },
-      { male, female, dominia },
+      { male, female, dominia, name },
       { upsert: true, new: true },
       (err, theme) => {
         if (err) return res.send(err);

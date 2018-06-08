@@ -23,9 +23,9 @@ const uuidMock = () => themeID;
 const Theme = require('../lib/models/Theme');
 const ThemeMock = sinon.mock(Theme)
 ThemeMock.expects('find').withArgs({ groupID }).yields(null, []);
-ThemeMock.expects('create').withArgs({ groupID, themeID, male: [], female: [], dominia: [] }).yields(null, {});
+ThemeMock.expects('create').withArgs({ groupID, themeID, male: [], female: [], dominia: [], name: 'foo' }).yields(null, {});
 ThemeMock.expects('findOne').withArgs({ groupID, themeID }).yields(null, {});
-ThemeMock.expects('findOneAndUpdate').withArgs({ groupID, themeID }, { male: [], female: [], dominia: [] }, { upsert: true, new: true }).yields(null, {});
+ThemeMock.expects('findOneAndUpdate').withArgs({ groupID, themeID }, { male: [], female: [], dominia: [], name: 'bar' }, { upsert: true, new: true }).yields(null, {});
 ThemeMock.expects('deleteOne').withArgs({ groupID, themeID }).yields(null);
 const dbMock = {
   Theme,
@@ -41,7 +41,6 @@ const routes = proxyquire('../lib/routes', {
 const server = proxyquire('../lib/index', {
   './routes': routes,
 });
-
 
 // Names
 describe('Names', () => {
@@ -90,7 +89,7 @@ describe('Names', () => {
   });
 
   describe('GET https://api.opendnd.org/v1/names/themes', () => {
-    it('responds with coming soon', (done) => {
+    it('responds with a list of themes', (done) => {
       chai
       .request(server)
       .get('/themes')
@@ -103,11 +102,11 @@ describe('Names', () => {
   });
 
   describe('POST https://api.opendnd.org/v1/names/themes', () => {
-    it('responds with coming soon', (done) => {
+    it('responds with the created theme', (done) => {
       chai
       .request(server)
       .post('/themes')
-      .send({ test: true })
+      .send({ name: 'foo' })
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -117,7 +116,7 @@ describe('Names', () => {
   });
 
   describe('GET https://api.opendnd.org/v1/names/themes/:theme_id', () => {
-    it('responds with coming soon', (done) => {
+    it('responds with the theme', (done) => {
       chai
       .request(server)
       .get(`/themes/${themeID}`)
@@ -130,11 +129,11 @@ describe('Names', () => {
   });
 
   describe('PUT https://api.opendnd.org/v1/names/themes/:theme_id', () => {
-    it('responds with coming soon', (done) => {
+    it('responds with the updated theme', (done) => {
       chai
       .request(server)
       .put(`/themes/${themeID}`)
-      .send({ test: false })
+      .send({ name: 'bar' })
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -144,7 +143,7 @@ describe('Names', () => {
   });
 
   describe('DELETE https://api.opendnd.org/v1/names/themes/:theme_id', () => {
-    it('responds with coming soon', (done) => {
+    it('responds with ok', (done) => {
       chai
       .request(server)
       .delete(`/themes/${themeID}`)

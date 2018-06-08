@@ -64,6 +64,7 @@ import SnackbarContent from "./Snackbar/SnackbarContent.jsx";
 // #############################
 
 import Table from "./Table/Table.jsx";
+import ManageTable from "./Table/ManageTable.jsx";
 
 // ##############################
 // // // Tasks
@@ -112,6 +113,7 @@ export {
   SnackbarContent,
   // Table
   Table,
+  ManageTable,
   // Tasks
   Tasks,
   // Typography
