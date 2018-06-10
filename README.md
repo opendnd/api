@@ -223,3 +223,11 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `POST   https://api.opendnd.org/v1/spells/:spell_id/export/:format`
 - [ ] `PUT    https://api.opendnd.org/v1/spells/:spell_id`
 - [ ] `DELETE https://api.opendnd.org/v1/spells/:spell_id`
+
+### [Artwork](artwork/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/artwork`
+- [ ] `POST   https://api.opendnd.org/v1/artwork`
+- [ ] `GET    https://api.opendnd.org/v1/artwork/:artwork_id`
+- [ ] `POST   https://api.opendnd.org/v1/artwork/:artwork_id/export/:format`
+- [ ] `PUT    https://api.opendnd.org/v1/artwork/:artwork_id`
+- [ ] `DELETE https://api.opendnd.org/v1/artwork/:artwork_id`
