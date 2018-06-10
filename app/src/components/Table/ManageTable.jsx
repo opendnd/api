@@ -90,6 +90,7 @@ class ManageTable extends Component {
                 <TableCell
                   className={classes.tableCell + " " + classes.tableHeadCell}
                   key={-1}
+                  width={100}
                  >
                   Actions
                 </TableCell>

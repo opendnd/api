@@ -15,6 +15,7 @@ class Dashboard extends React.Component {
     if(!auth.isAuthenticated()) {
       auth.login();
     }
+    console.log(auth);
   }
 
   handleChange = (event, value) => {

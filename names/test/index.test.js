@@ -18,17 +18,35 @@ const addUserMetaMock = (req, res, next) => {
   req.roles = ['admin'];
   req.groupID = groupID;
   next();
-}
+};
+const optAuthMock = (middleware) => {
+  return (req, res, next) => {
+    middleware(req, res, next);
+  };
+};
 const uuidMock = () => themeID;
 const Theme = require('../lib/models/Theme');
-const ThemeMock = sinon.mock(Theme)
-ThemeMock.expects('find').withArgs({ groupID }).yields(null, []);
+const ThemeMock = sinon.mock(Theme);
+ThemeMock.expects('find').withArgs({ groupID }).yields(null, []).atLeast(1);
 ThemeMock.expects('create').withArgs({ groupID, themeID, male: [], female: [], dominia: [], name: 'foo' }).yields(null, {});
 ThemeMock.expects('findOne').withArgs({ groupID, themeID }).yields(null, {});
 ThemeMock.expects('findOneAndUpdate').withArgs({ groupID, themeID }, { male: [], female: [], dominia: [], name: 'bar' }, { upsert: true, new: true }).yields(null, {});
 ThemeMock.expects('deleteOne').withArgs({ groupID, themeID }).yields(null);
+const DefaultsNomina = require('../lib/models/DefaultsNomina');
+const DefaultsNominaMock = sinon.mock(DefaultsNomina);
+DefaultsNominaMock.expects('find').withArgs({ groupID }).yields(null, {
+  themes: {
+    test: {
+      male: ['Bob', 'David'],
+      female: ['Bob', 'David'],
+      dominia: ['Atlanta', 'Chicago'],
+    },
+  },
+}).atLeast(1);
+DefaultsNominaMock.expects('findOneAndUpdate').withArgs({ groupID }, {}, { upsert: true, new: true }).yields(null, {}).atLeast(1);
 const dbMock = {
   Theme,
+  DefaultsNomina,
 };
 
 // proxies
@@ -36,6 +54,7 @@ const routes = proxyquire('../lib/routes', {
   './db': dbMock,
   './jwtCheck': jwtCheckMock,
   './addUserMeta': addUserMetaMock,
+  './optAuth': optAuthMock,
   'uuid/v4': uuidMock,
 });
 const server = proxyquire('../lib/index', {
@@ -44,6 +63,20 @@ const server = proxyquire('../lib/index', {
 
 // Names
 describe('Names', () => {
+  describe('GET https://api.opendnd.org/v1/names', () => {
+    it('responds with a list of themes', (done) => {
+      chai
+      .request(server)
+      .get('/')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('array');
+        expect(res.body).to.include('test');
+        done();
+      });
+    });
+  });
+
   describe('POST https://api.opendnd.org/v1/names', () => {
     it('responds w/out options', (done) => {
       chai
@@ -61,7 +94,7 @@ describe('Names', () => {
       .request(server)
       .post('/')
       .send({
-        theme: 'medieval',
+        theme: 'test',
         type: 'female',
       })
       .end((err, res) => {
@@ -76,7 +109,7 @@ describe('Names', () => {
       .request(server)
       .post('/')
       .send({
-        theme: 'medieval',
+        theme: 'test',
         type: 'female',
         number: 5,
       })

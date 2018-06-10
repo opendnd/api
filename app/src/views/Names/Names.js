@@ -52,6 +52,16 @@ class Names extends React.Component {
     });
   }
 
+  outputList = (list) => {
+    return list.join(', ');
+  }
+
+  inputList = (list) => {
+    return list.split(',').map((item) => {
+      return item.replace(/\s/gi, '');
+    });
+  }
+
   handleGenerate = (e) => {
     const { type, theme, number } = this.state.curName;
 
@@ -98,9 +108,9 @@ class Names extends React.Component {
     // create the theme
     client.names.themes.create({
       name,
-      male: male.split(','),
-      female: female.split(','),
-      dominia: dominia.split(','),
+      male: this.inputList(male),
+      female: this.inputList(female),
+      dominia: this.inputList(dominia),
     }).then((res) => {
       if (res.data) {
         this.setState({
@@ -123,9 +133,9 @@ class Names extends React.Component {
     // update the theme
     client.names.themes.update(themeID, {
       name,
-      male: male.split(','),
-      female: female.split(','),
-      dominia: dominia.split(','),
+      male: this.inputList(male),
+      female: this.inputList(female),
+      dominia: this.inputList(dominia),
     }).then((res) => {
       if (res.data) {
         this.setState({
@@ -151,9 +161,9 @@ class Names extends React.Component {
     this.setState({
       curTheme: {
         name,
-        male: male.join(', '),
-        female: female.join(', '),
-        dominia: dominia.join(', '),
+        male: this.outputList(male),
+        female: this.outputList(female),
+        dominia: this.outputList(dominia),
       },
       mode: 'edit',
       themeKey: key,
@@ -198,9 +208,9 @@ class Names extends React.Component {
     const tableData = themes.map((theme) => {
       return [
         theme.name,
-        theme.male.join(', '),
-        theme.female.join(', '),
-        theme.dominia.join(', '),
+        this.outputList(theme.male),
+        this.outputList(theme.female),
+        this.outputList(theme.dominia),
       ];
     });
 

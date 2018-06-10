@@ -1,26 +1,49 @@
-const pinfo = require('../package');
-const { version } = pinfo;
-const opendnd = require('opendnd');
-const { Nomina } = opendnd;
 const jwtCheck = require('./jwtCheck');
 const addUserMeta = require('./addUserMeta');
 const authorize = require('./authorize');
+const optAuth = require('./optAuth');
 const logger = require('./logger');
-const { Theme } = require('./db');
+const { nominaGenerate, nominaList } = require('./nomina');
+const updateDefaults = require('./updateDefaults');
+const { Theme, DefaultsNomina } = require('./db');
 const uuidv4 = require('uuid/v4');
 
+// additional middleware
 const readNames = authorize('read:names');
 const writeNames = authorize('write:names');
+const optJwtCheck = optAuth(jwtCheck);
+const optAddUserMeta = optAuth(addUserMeta);
+const optReadNames = optAuth(readNames);
 
 // setup the routes
 module.exports.setup = (app) => {
   /**
-   * Get the API version. Auth not required.
+   * Get a list of themes in Nomina (should match with the Themes list). Auth not required.
    * @route GET /
-   * @returns {string} 200 - version
+   * @returns {array} 200 - themes
    */
-  app.get('/', [jwtCheck, addUserMeta, readNames], (req, res) => {
-    res.send({ version });
+  app.get('/', [optJwtCheck, optAddUserMeta, optReadNames], (req, res) => {
+    const { groupID } = req;
+
+    // if we have a groupID then grab the group's defaults
+    if (groupID) {
+      DefaultsNomina.findOne({ groupID }, (err, defaults) => {
+        if (err) return res.send(err);
+
+        try {
+          return res.send(nominaList(defaults));
+        } catch (e) {
+          return res.send(e);
+        }
+      });
+    // otherwise use system defaults
+    } else {
+      try {
+        return res.send(nominaList());
+      } catch (e) {
+        return res.send(e);
+      }
+    }
   });
 
   /**
@@ -29,22 +52,39 @@ module.exports.setup = (app) => {
    * @param {string} body.body - options for theme, type and number
    * @returns {object} 200 - name
    */
-  app.post('/', (req, res) => {
-    try {
-      const opts = req.body;
-      const name = Nomina.generate(opts);
+  app.post('/', [optJwtCheck, optAddUserMeta, optReadNames], (req, res) => {
+    const { groupID, body } = req;
+    const { theme, type, number } = body;
+    const opts = {
+      theme,
+      type,
+      number,
+    };
 
-      logger.info(`Generating name "${name}"\n\topts: ${JSON.stringify(opts)}`);
+    // if we have a groupID then grab the group's defaults
+    if (groupID) {
+      DefaultsNomina.findOne({ groupID }, (err, defaults) => {
+        if (err) return res.send(err);
 
-      // response with array
-      if (Array.isArray(name)) return res.send({ names: name });
-
-      // standard response
-      return res.send({
-        name,
+        try {
+          const result = nominaGenerate(opts, defaults);
+          logger.info(`Generating name "${result}"\n\topts: ${JSON.stringify(opts)}`);
+          if (Array.isArray(result)) return res.send({ names: result });
+          return res.send({ name: result });
+        } catch (e) {
+          return res.send(e);
+        }
       });
-    } catch (e) {
-      return res.send(e);
+    // otherwise use system defaults
+    } else {
+      try {
+        const result = nominaGenerate(opts);
+        logger.info(`Generating name "${result}"\n\topts: ${JSON.stringify(opts)}`);
+        if (Array.isArray(result)) return res.send({ names: result });
+        return res.send({ name: result });
+      } catch (e) {
+        return res.send(e);
+      }
     }
   });
 
@@ -77,6 +117,7 @@ module.exports.setup = (app) => {
     // create
     Theme.create({ groupID, themeID, male, female, dominia, name }, (err, theme) => {
       if (err) return res.send(err);
+      updateDefaults(groupID);
       return res.send(theme);
     });
   });
@@ -118,6 +159,7 @@ module.exports.setup = (app) => {
       { upsert: true, new: true },
       (err, theme) => {
         if (err) return res.send(err);
+        updateDefaults(groupID);
         return res.send(theme);
       },
     );
@@ -136,6 +178,7 @@ module.exports.setup = (app) => {
     // delete
     Theme.deleteOne({ groupID, themeID }, (err) => {
       if (err) return res.send(err);
+      updateDefaults(groupID);
       return res.send('ok');
     });
   });
