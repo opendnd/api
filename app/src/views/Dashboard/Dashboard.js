@@ -12,10 +12,7 @@ class Dashboard extends React.Component {
 
   componentWillMount = () => {
     const auth = new Auth(this.props);
-    if(!auth.isAuthenticated()) {
-      auth.login();
-    }
-    console.log(auth);
+    if(!auth.isAuthenticated()) auth.login();
   }
 
   handleChange = (event, value) => {
