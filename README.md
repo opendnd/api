@@ -231,3 +231,11 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `POST   https://api.opendnd.org/v1/artwork/:artwork_id/export/:format`
 - [ ] `PUT    https://api.opendnd.org/v1/artwork/:artwork_id`
 - [ ] `DELETE https://api.opendnd.org/v1/artwork/:artwork_id`
+
+### [Diseases](diseases/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/diseases`
+- [ ] `POST   https://api.opendnd.org/v1/diseases`
+- [ ] `GET    https://api.opendnd.org/v1/diseases/:disease_id`
+- [ ] `POST   https://api.opendnd.org/v1/diseases/:disease_id/export/:format`
+- [ ] `PUT    https://api.opendnd.org/v1/diseases/:disease_id`
+- [ ] `DELETE https://api.opendnd.org/v1/diseases/:disease_id`
