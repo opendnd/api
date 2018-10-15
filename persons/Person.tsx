@@ -5,6 +5,7 @@ import { LinkBuilding } from '../buildings/Building'
 import { LinkCampaign } from '../campaigns/Campaign'
 import { LinkKlass } from '../klasses/Klass'
 import { LinkDomain } from '../domains/Domain'
+import { LinkDialog } from '../dialogs/Dialog'
 import { LinkDisease } from '../diseases/Disease'
 import { LinkCulture } from '../cultures/Culture'
 import { LinkSpell } from '../spells/Spell'
@@ -418,6 +419,7 @@ export interface Person {
   activeCampaign: LinkCampaign
   quests: LinkQuest[]
   stories: LinkStory[]
+  dialogs: LinkDialog[]
 
   // specific notes for this person like campaign notes
   notes: string
