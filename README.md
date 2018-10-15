@@ -220,7 +220,7 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/languages/:language_id`
 - [ ] `DELETE https://api.opendnd.org/v1/languages/:language_id`
 
-### [sayings](sayings/README.md)
+### [Sayings](sayings/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/sayings`
 - [ ] `POST   https://api.opendnd.org/v1/sayings`
 - [ ] `GET    https://api.opendnd.org/v1/sayings/:saying_id`
