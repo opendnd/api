@@ -26,6 +26,8 @@ import Spells from 'views/Spells/Spells';
 import Stories from 'views/Stories/Stories';
 import Traps from 'views/Traps/Traps';
 import Artwork from 'views/Artwork/Artwork';
+import Diseases from 'views/Diseases/Diseases';
+import Sayings from 'views/Sayings/Sayings';
 
 import {
   Dashboard,
@@ -40,6 +42,7 @@ import {
   SettingsEthernet,
   Language,
   Comment,
+  Message,
   Layers,
   Satellite,
   SupervisorAccount,
@@ -55,6 +58,7 @@ import {
   Textsms,
   Warning,
   Brush,
+  Healing,
 } from '@material-ui/icons';
 
 const dashboardRoutes = [
@@ -254,6 +258,20 @@ const dashboardRoutes = [
     icon: Brush,
     sidebar: true,
     component: Artwork
+  },{
+    path: '/diseases',
+    sidebarName: 'Diseases',
+    navbarName: 'Diseases',
+    icon: Healing,
+    sidebar: true,
+    component: Diseases
+  },{
+    path: '/sayings',
+    sidebarName: 'Sayings',
+    navbarName: 'Sayings',
+    icon: Message,
+    sidebar: true,
+    component: Sayings
   },{ 
     redirect: true,
     sidebar: false,

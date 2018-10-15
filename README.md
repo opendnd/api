@@ -15,6 +15,27 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/items/:item_id`
 - [ ] `DELETE https://api.opendnd.org/v1/items/:item_id`
 
+### [Tools](tools/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/tools`
+- [ ] `POST   https://api.opendnd.org/v1/tools`
+- [ ] `GET    https://api.opendnd.org/v1/tools/:tool_id`
+- [ ] `PUT    https://api.opendnd.org/v1/tools/:tool_id`
+- [ ] `DELETE https://api.opendnd.org/v1/tools/:tool_id`
+
+### [Features](features/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/features`
+- [ ] `POST   https://api.opendnd.org/v1/features`
+- [ ] `GET    https://api.opendnd.org/v1/features/:feature_id`
+- [ ] `PUT    https://api.opendnd.org/v1/features/:feature_id`
+- [ ] `DELETE https://api.opendnd.org/v1/features/:feature_id`
+
+### [Familiars](familiars/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/familiars`
+- [ ] `POST   https://api.opendnd.org/v1/familiars`
+- [ ] `GET    https://api.opendnd.org/v1/familiars/:familiar_id`
+- [ ] `PUT    https://api.opendnd.org/v1/familiars/:familiar_id`
+- [ ] `DELETE https://api.opendnd.org/v1/familiars/:familiar_id`
+
 ### [Races](races/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/races`
 - [ ] `POST   https://api.opendnd.org/v1/races`
@@ -29,12 +50,12 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/backgrounds/:background_id`
 - [ ] `DELETE https://api.opendnd.org/v1/backgrounds/:background_id`
 
-### [Classes](classes/README.md)
-- [ ] `GET    https://api.opendnd.org/v1/classes`
-- [ ] `POST   https://api.opendnd.org/v1/classes`
-- [ ] `GET    https://api.opendnd.org/v1/classes/:class_id`
-- [ ] `PUT    https://api.opendnd.org/v1/classes/:class_id`
-- [ ] `DELETE https://api.opendnd.org/v1/classes/:class_id`
+### [K(c)lasses](klasses/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/klasses`
+- [ ] `POST   https://api.opendnd.org/v1/klasses`
+- [ ] `GET    https://api.opendnd.org/v1/klasses/:klass_id`
+- [ ] `PUT    https://api.opendnd.org/v1/klasses/:klass_id`
+- [ ] `DELETE https://api.opendnd.org/v1/klasses/:klass_id`
 
 ### [Domains](domains/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/domains`
@@ -120,6 +141,13 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/buildings/:building_id`
 - [ ] `DELETE https://api.opendnd.org/v1/buildings/:building_id`
 
+### [Titles](titles/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/titles`
+- [ ] `POST   https://api.opendnd.org/v1/titles`
+- [ ] `GET    https://api.opendnd.org/v1/titles/:title_id`
+- [ ] `PUT    https://api.opendnd.org/v1/titles/:title_id`
+- [ ] `DELETE https://api.opendnd.org/v1/titles/:title_id`
+
 ### [Encounters](encounters/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/encounters`
 - [ ] `POST   https://api.opendnd.org/v1/encounters`
@@ -192,6 +220,14 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/languages/:language_id`
 - [ ] `DELETE https://api.opendnd.org/v1/languages/:language_id`
 
+### [sayings](sayings/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/sayings`
+- [ ] `POST   https://api.opendnd.org/v1/sayings`
+- [ ] `GET    https://api.opendnd.org/v1/sayings/:saying_id`
+- [ ] `POST   https://api.opendnd.org/v1/sayings/:saying_id/export/:format`
+- [ ] `PUT    https://api.opendnd.org/v1/sayings/:saying_id`
+- [ ] `DELETE https://api.opendnd.org/v1/sayings/:saying_id`
+
 ### [Cultures](cultures/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/cultures`
 - [ ] `POST   https://api.opendnd.org/v1/cultures`
@@ -239,3 +275,8 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `POST   https://api.opendnd.org/v1/diseases/:disease_id/export/:format`
 - [ ] `PUT    https://api.opendnd.org/v1/diseases/:disease_id`
 - [ ] `DELETE https://api.opendnd.org/v1/diseases/:disease_id`
+
+## License
+The software in this project is licensed under The MIT License (MIT).
+This project uses material licensed under the OPEN GAME LICENSE Version 1.0a.
+For more information please refer to the [LICENSE](LICENSE).

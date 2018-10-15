@@ -1,0 +1,188 @@
+{
+  "rows": [
+    {
+      "fields": [
+        {
+          "type": "dropdown",
+          "isEditMode": false,
+          "width": 100,
+          "label": "Person Type",
+          "placeholder": "",
+          "helpText": " ",
+          "counter": 300,
+          "value": "Value",
+          "optionsLayout": "v",
+          "optionValue": "Playable Character",
+          "hasError": false,
+          "options": [
+            {
+              "label": "Playable Character",
+              "value": "Playable Character",
+              "isChecked": false
+            },
+            {
+              "label": "Non-Playable Character",
+              "value": "Non-Playable Character",
+              "isChecked": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Name",
+          "type": "text",
+          "isEditMode": true,
+          "value": "",
+          "helpText": " ",
+          "counter": 300,
+          "width": 100,
+          "placeholder": "",
+          "hasError": false
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Age",
+          "type": "text",
+          "isEditMode": false,
+          "value": "",
+          "helpText": " ",
+          "counter": 300,
+          "width": 100,
+          "placeholder": "",
+          "hasError": false
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Gender",
+          "type": "dropdown",
+          "isEditMode": false,
+          "value": "Text field value",
+          "helpText": " ",
+          "counter": 300,
+          "width": 100,
+          "placeholder": "",
+          "optionsLayout": "v",
+          "optionValue": "Male",
+          "hasError": false,
+          "options": [
+            {
+              "label": "Male",
+              "value": "Male",
+              "isChecked": false
+            },
+            {
+              "label": "Female",
+              "value": "Female",
+              "isChecked": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Race",
+          "type": "dropdown",
+          "isEditMode": false,
+          "value": "Text field value",
+          "helpText": " ",
+          "counter": 300,
+          "width": 100,
+          "placeholder": "",
+          "optionsLayout": "v",
+          "optionValue": "Random",
+          "hasError": false,
+          "options": [
+            {
+              "label": "Random",
+              "value": "Random",
+              "isChecked": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Alignment",
+          "type": "dropdown",
+          "isEditMode": false,
+          "value": "Text field value",
+          "helpText": " ",
+          "counter": 300,
+          "width": 100,
+          "placeholder": "",
+          "optionsLayout": "v",
+          "optionValue": "Random",
+          "hasError": false,
+          "options": [
+            {
+              "label": "Random",
+              "value": "Random",
+              "isChecked": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Background",
+          "type": "dropdown",
+          "isEditMode": false,
+          "value": "Text field value",
+          "helpText": " ",
+          "counter": 300,
+          "width": 100,
+          "placeholder": "",
+          "optionsLayout": "v",
+          "optionValue": "Random",
+          "hasError": false,
+          "options": [
+            {
+              "label": "Random",
+              "value": "Random",
+              "isChecked": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Class",
+          "type": "dropdown",
+          "isEditMode": false,
+          "value": "Text field value",
+          "helpText": " ",
+          "counter": 300,
+          "width": 100,
+          "placeholder": "",
+          "optionsLayout": "v",
+          "optionValue": "Random",
+          "hasError": false,
+          "options": [
+            {
+              "label": "Random",
+              "value": "Random",
+              "isChecked": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
