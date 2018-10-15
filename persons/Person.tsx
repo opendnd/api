@@ -75,6 +75,9 @@ export interface Person {
   // type for this person
   type: PersonTypes
 
+  // data for the DNA of the person
+  DNA: DNA
+
   // the following numbers should correspond to each other based on the XP chart
   level: number
   XP: number
@@ -221,15 +224,6 @@ export interface Person {
   // a list of items
   items: LinkItem[]
   magicItems: LinkItem[]
-
-  // additional owernship
-  chattel: LinkPerson[]
-  domains: LinkDomain[]
-  buildings: LinkBuilding[]
-  titles: LinkTitle[]
-
-  // a list of familiars
-  familiars: LinkFamiliar[]
 
   // weight from items (encumberance)
   // not to be confused with character weight found in DNA
@@ -380,8 +374,12 @@ export interface Person {
     mount: LinkFamiliar
   }
 
-  // data for the DNA of the person
-  DNA: DNA
+  // additional owernship
+  chattel: LinkPerson[]
+  domains: LinkDomain[]
+  buildings: LinkBuilding[]
+  titles: LinkTitle[]
+  familiars: LinkFamiliar[]
 
   // a one word description of this character's personality
   trait: string
