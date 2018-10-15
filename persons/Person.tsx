@@ -151,7 +151,7 @@ export interface Person {
   vulnerability: DamageTypes
 
   // alignment for the character
-  alignment: Alignments
+  alignment: ExpandedAlignments
 
   // the character k(c)lass from the list of available
   klass: LinkKlass
