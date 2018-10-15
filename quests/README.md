@@ -11,7 +11,7 @@ Create a quest. If passing the `save=true` option this will save it to the API. 
 Get a quest.
 
 #### `POST   https://api.opendnd.org/v1/quests/:quest_id/export/:format`
-Export the quest into either markdown, yaml, text or a quaestae file (`*.que`).
+Export the quest into either markdown, yaml, text or a questae file (`*.que`).
 
 #### `PUT    https://api.opendnd.org/v1/quests/:quest_id`
 Update a quest.
