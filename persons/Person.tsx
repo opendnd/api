@@ -60,7 +60,7 @@ export interface LinkPerson {
   // uuid for this object
   uuid: string
 
-  // name of the player and the character
+  // name of the character
   name: string
 }
 
