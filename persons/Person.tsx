@@ -90,10 +90,11 @@ export interface Person {
   age: number
   ageGroup: AgeGroups
 
-  // power, honor and piety are similar in that they each determine your influence/respect with different groups
+  // power, honor, piety and reputation are similar in that they each determine your influence/respect with different groups
   power: number
   honor: number
   piety: number
+  reputation: number
 
   // treasury is made up of values for copper, silver, electrum, gold and platinum pieces (coins)
   // how much each coin is worth varies from towns, settings and campaigns
@@ -418,6 +419,7 @@ export interface Person {
   quests: LinkQuest[]
   stories: LinkStory[]
   dialogs: LinkDialog[]
+  currentDialog: number
 
   // specific notes for this person like campaign notes
   notes: string
