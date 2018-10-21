@@ -276,6 +276,14 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/diseases/:disease_id`
 - [ ] `DELETE https://api.opendnd.org/v1/diseases/:disease_id`
 
+### [Vehicles](vehicles/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/vehicles`
+- [ ] `POST   https://api.opendnd.org/v1/vehicles`
+- [ ] `GET    https://api.opendnd.org/v1/vehicles/:vehicle_id`
+- [ ] `POST   https://api.opendnd.org/v1/vehicles/:vehicle_id/export/:format`
+- [ ] `PUT    https://api.opendnd.org/v1/vehicles/:vehicle_id`
+- [ ] `DELETE https://api.opendnd.org/v1/vehicles/:vehicle_id`
+
 ## License
 The software in this project is licensed under The MIT License (MIT).
 This project uses material licensed under the OPEN GAME LICENSE Version 1.0a.

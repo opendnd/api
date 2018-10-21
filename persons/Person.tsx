@@ -16,11 +16,12 @@ import { LinkReligion } from '../religions/Religion'
 import { LinkLanguage } from '../languages/Language'
 import { LinkFeature } from '../features/Feature'
 import { LinkFamiliar } from '../familiars/Familiar'
+import { TransporationModes } from '../vehicles/Vehicle'
 import { LinkTool } from '../tools/Tool'
 import { LinkQuest } from '../quests/Quest'
 import { LinkTitle } from '../titles/Title'
 import { LinkStory } from '../stories/Story'
-import { Dice, DamageTypes, Abilities, Skills } from '../core/Core'
+import { Dice, DamageTypes, AbilityTypes, SkillTypes, ExpandedAlignments } from '../core/Core'
 
 // the types of persons
 export enum PersonTypes {
@@ -33,26 +34,6 @@ export enum AgeGroups {
   Young,
   Middle,
   Old,
-}
-
-// list of alignments
-// x: Lawful, Neutral, Chaotic
-// y: Good, Neutral, Evil
-export enum Alignments {
-  LG, NG, CG,
-  LN, NN, CN,
-  LE, NE, CE,
-}
-
-// list of expanded alignments
-// x: Lawful, Social, Neutral, Rebel, Chaotic
-// y: Good, Moral, Neutral, Impure, Evil
-export enum ExpandedAlignments {
-  LG, SG, NG, RG, CG,
-  LM, SM, NM, RM, CM,
-  LN, SN, NN, RN, CN,
-  LI, SI, NI, RI, CI,
-  LE, SE, NE, RE, CE,
 }
 
 // a link to a person
@@ -77,6 +58,10 @@ export interface Person {
 
   // is this an abstract concept of a person like a template?
   abstract: boolean
+  abstractProperties: object
+
+  // derived source or template this person was based on
+  derivation: LinkPerson
 
   // data for the DNA of the person
   DNA: DNA
@@ -110,6 +95,9 @@ export interface Person {
     pp: number // 10    | USD $1,000.00
   }
 
+  // base cost in cp of the person
+  cost: number
+
   // ability scores
   abilities: {
     STR: number // Strength, measuring physical power
@@ -123,7 +111,7 @@ export interface Person {
   // list of proficiencies
   proficiencies: {
     // a list of skills with proficiency
-    skills: Skills[]
+    skills: SkillTypes[]
 
     // a list of languages with proficiency
     languages: LinkLanguage[]
@@ -133,6 +121,9 @@ export interface Person {
 
     // a list of weapons with proficiency
     weapons: WeaponTypes[]
+
+    // a list of transportation modes with proficiency
+    transportation: TransporationModes[]
 
     // a list of tools with proficiency
     tools: LinkTool[]
@@ -149,6 +140,7 @@ export interface Person {
   // hit dice information
   hitDice: Dice[]
   maxHP: number
+  tempHP: number
   HP: number
 
   // the following deals with health conditions
@@ -166,7 +158,7 @@ export interface Person {
   // spellcasting information
   spellcasting: {
     // spell casting ability
-    ability: Abilities
+    ability: AbilityTypes
     
     // spell save DC
     saveDC: number
@@ -232,6 +224,7 @@ export interface Person {
   // weight from items (encumberance)
   // not to be confused with character weight found in DNA
   weight: number
+  capacity: number
 
   // equipment is what is currently equipped to the person
   // each below is a reference to a uuid in items or a physical description

@@ -31,6 +31,12 @@ export interface Trait {
   trait: string
 }
 
+// link to a DNA
+export interface LinkDNA {
+  // uuid for this object
+  uuid: string
+}
+
 // DNA is used to form the makeup of a creature at a genetic level
 export interface DNA {
   // version number from genetica
@@ -44,6 +50,10 @@ export interface DNA {
 
   // is this an abstract concept of a DNA set like a template?
   abstract: boolean
+  abstractProperties: object
+
+  // derived source or template this DNA was based on
+  derivation: LinkDNA
 
   // race of the creature
   race: LinkRace
@@ -60,43 +70,43 @@ export interface DNA {
   // the list of traits for the creature
   traits: {
     // general traits include information about the body like shape
-    general: Trait
+    general?: Trait
 
     // eye color
-    eyeColor: Trait
+    eyeColor?: Trait
 
     // general information about the hair like shape, style, etc.
-    hairGeneral: Trait
+    hairGeneral?: Trait
 
     // hair color
-    hairColor: Trait
+    hairColor?: Trait
 
     // general information about the skin like texture
-    skinGeneral: Trait
+    skinGeneral?: Trait
 
     // skin color
-    skinColor: Trait
+    skinColor?: Trait
 
     // eye shape
-    eyeShape: Trait
+    eyeShape?: Trait
 
     // face shape
-    faceShape: Trait
+    faceShape?: Trait
 
     // nose
-    faceNose: Trait
+    faceNose?: Trait
 
     // facial hair
-    hairFacial: Trait
+    hairFacial?: Trait
 
     // mouth
-    faceMouth: Trait
+    faceMouth?: Trait
 
     // eye brows
-    eyeBrows: Trait
+    eyeBrows?: Trait
 
     // this includes information about how the skin ages like texture
-    skinAging: Trait
+    skinAging?: Trait
   }
 
   // chromosomes have the dice rolls for each chromosome pair

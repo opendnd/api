@@ -27,7 +27,7 @@ export enum DamageTypes {
 }
 
 // list of abilities
-export enum Abilities {
+export enum AbilityTypes {
   Strength, // measuring physical power
   Dexterity, // measuring agility
   Constitution, // measuring endurance
@@ -37,7 +37,7 @@ export enum Abilities {
 }
 
 // list of skills
-export enum Skills {
+export enum SkillTypes {
   // STR
   Athletics,
   
@@ -65,4 +65,31 @@ export enum Skills {
   Intimidation,
   Performance,
   Persuasion,
+}
+
+// list of alignments
+// x: Lawful, Neutral, Chaotic
+// y: Good, Neutral, Evil
+export enum Alignments {
+  LG, NG, CG,
+  LN, NN, CN,
+  LE, NE, CE,
+}
+
+// list of expanded alignments
+// x: Lawful, Social, Neutral, Rebel, Chaotic
+// y: Good, Moral, Neutral, Impure, Evil
+export enum ExpandedAlignments {
+  LG, SG, NG, RG, CG,
+  LM, SM, NM, RM, CM,
+  LN, SN, NN, RN, CN,
+  LI, SI, NI, RI, CI,
+  LE, SE, NE, RE, CE,
+}
+
+// output the advantage types
+export enum AdvantageTypes {
+  Advantage,
+  Neutral,
+  Disadvantage,
 }
