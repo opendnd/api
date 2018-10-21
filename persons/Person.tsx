@@ -75,6 +75,9 @@ export interface Person {
   // type for this person
   type: PersonTypes
 
+  // is this an abstract concept of a person like a template?
+  abstract: boolean
+
   // data for the DNA of the person
   DNA: DNA
 

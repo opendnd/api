@@ -42,6 +42,9 @@ export interface DNA {
   // size of the creature
   size: Sizes
 
+  // is this an abstract concept of a DNA set like a template?
+  abstract: boolean
+
   // race of the creature
   race: LinkRace
 
@@ -101,38 +104,38 @@ export interface DNA {
   // regular pair ex: 1=6
   // sex chromosome pair ex: X1=Y2
   chromosomes: {
-    1: string
-    2: string
-    3: string
-    4: string
-    5: string
-    6: string
-    7: string
-    8: string
-    9: string
-    10: string
-    11: string
-    12: string
-    13: string
-    14: string
-    15: string
-    16: string
-    17: string
-    18: string
-    19: string
-    20: string
-    21: string
-    22: string
-    23: string
-    24: string
-    25: string
-    26: string
-    27: string
-    28: string
-    29: string
-    30: string
-    31: string
-    32: string
+    1?: string
+    2?: string
+    3?: string
+    4?: string
+    5?: string
+    6?: string
+    7?: string
+    8?: string
+    9?: string
+    10?: string
+    11?: string
+    12?: string
+    13?: string
+    14?: string
+    15?: string
+    16?: string
+    17?: string
+    18?: string
+    19?: string
+    20?: string
+    21?: string
+    22?: string
+    23?: string
+    24?: string
+    25?: string
+    26?: string
+    27?: string
+    28?: string
+    29?: string
+    30?: string
+    31?: string
+    32?: string
   }
 
   // notes as it relates to the backstory, campaign, etc.
