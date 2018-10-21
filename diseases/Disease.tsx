@@ -1,4 +1,4 @@
-import { Dice, AbilityTypes } from '../core/Core'
+import { Dice, AbilityTypes, DamageTypes } from '../core/Core'
 import { Trait } from '../dna/DNA'
 
 export enum ConditionTypes {
@@ -54,12 +54,16 @@ export interface Disease {
   agent: AgentTypes
   transmission: TransmissionTypes
 
-  // incubation period with a base number in hours with an optional modifier in dice
-  incubation: number
+  // incubation period with a base number in seconds with an optional modifier in dice
+  incubationTime: number
   incuationDice: Dice
 
   // what level of exhaustion does this cause?
   exhaustion: number
+
+  // what resistance and vulnerability is there
+  resistance: DamageTypes
+  vulnerability: DamageTypes
 
   // what is the genetic immunity
   immunity: Trait
@@ -67,6 +71,10 @@ export interface Disease {
   // effects
   savingThrow: AbilityTypes
   damage: Dice[]
+
+  // a trigger value for the disease and time in seconds
+  trigger: string
+  triggerTime: number
 
   // notes on the disease
   notes: string
