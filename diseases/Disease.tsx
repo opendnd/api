@@ -51,7 +51,7 @@ export interface Disease {
   // condition, agent, transmission, disease
   type: DiseaseTypes
   condition: ConditionTypes
-  agent: AgentTypes
+  pathogen: AgentTypes
   transmission: TransmissionTypes
 
   // incubation period with a base number in seconds with an optional modifier in dice

@@ -11,8 +11,8 @@ export interface Response {
   // the prompts index available for this response
   prompts: string
 
-  // a trigger event for this response
-  trigger: string
+  // a list of trigger events for this response
+  triggers: string[]
 
   // information for voice over, emotion, ambience, etc.
   VO: string
@@ -31,8 +31,11 @@ export interface Choice {
   // the next response index for this choice
   response: string
 
-  // a trigger event for this response
-  trigger: string
+  // a requirement is which technical requirement the player must have to use this choice
+  requirement: {}
+
+  // a list of trigger events for this response
+  triggers: string[]
 
   // information for voice over, emotion, ambience, etc.
   VO: string

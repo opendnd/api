@@ -406,6 +406,9 @@ export interface Person {
   background: LinkBackground
   specialty: string
 
+  // knowledge is a list of information the player has learned about the campaign, world, etc.
+  knowledge: string[]
+
   // additional information about this character's backstory
   backstory: string
 
