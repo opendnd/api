@@ -188,6 +188,14 @@ Below are a list of API routes that are on the roadmap:
 - [ ] `PUT    https://api.opendnd.org/v1/quests/:quest_id`
 - [ ] `DELETE https://api.opendnd.org/v1/quests/:quest_id`
 
+### [Events](events/README.md)
+- [ ] `GET    https://api.opendnd.org/v1/events`
+- [ ] `POST   https://api.opendnd.org/v1/events`
+- [ ] `GET    https://api.opendnd.org/v1/events/:event_id`
+- [ ] `POST   https://api.opendnd.org/v1/events/:event_id/export/:format`
+- [ ] `PUT    https://api.opendnd.org/v1/events/:event_id`
+- [ ] `DELETE https://api.opendnd.org/v1/events/:event_id`
+
 ### [Dialogs](dialogs/README.md)
 - [ ] `GET    https://api.opendnd.org/v1/dialogs`
 - [ ] `POST   https://api.opendnd.org/v1/dialogs`
